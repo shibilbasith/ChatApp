@@ -278,6 +278,8 @@ hr {
     border: none;
     background: transparent;
     font-size: 20px;
+    margin-left: 50px;
+    padding-top: 5px;
 }
 
 .messageContainer_input_text>input:focus {
@@ -367,4 +369,17 @@ hr {
 .singleMessageTick{
     width:15px;
     margin-left: 5px;
+}
+
+
+.upload_container{
+    position: absolute;
+    bottom: 87px;
+    left: 8px;
+}
+
+.uploadImg_btn{
+    position: absolute;
+    bottom: -68px;
+    left: 8px;
 }

@@ -8,10 +8,10 @@ import messsageRoutes from './routes/message.routes.js'
 import userRoutes from './routes/user.routes.js'
 import connectDB from './config/db.js';
 import { app, server } from './socket/socket.js';
+dotenv.config();
+
 
 const PORT = process.env.PORT || 5002;
-
-dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));

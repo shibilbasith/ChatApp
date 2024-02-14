@@ -14,23 +14,13 @@ const Messages = () => {
   	}, 100);
   }, [messages]);
   return (
-    // <div style={{ width: '230px' }}>
-    //   {messages?.map((message) => (
-    //     <div key={message?._id} /* ref={lastMessageRef} */>
-    //       <Message message={message} />
-    //     </div>
-    //   ))}
-    // </div>
     <>
-
       {messages?.map((message) => (
         <div key={message?._id} ref={lastMessageRef}>
           <Message message={message} />
         </div>
       ))}
     </>
-
-
 
   )
 }
