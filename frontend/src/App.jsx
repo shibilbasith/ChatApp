@@ -5,6 +5,8 @@ import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import { useAuthStore } from './store/authStore'
 import { Toaster } from 'react-hot-toast'
+import CollabDraw from './pages/home/CollabDraw'
+import ChatDashboard from './pages/home/ChatDashboard'
 
 function App() {
   const authUser = useAuthStore((state) => state.authUser);
@@ -12,10 +14,16 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={authUser ? <Home /> : <Navigate to={"/login"} />} />
+        {/* <Route path='/' element={authUser ? <Home /> : <Navigate to={"/login"} />} /> */}
+
+        <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />}>
+          <Route path='/' element={<ChatDashboard />} />
+          <Route path='/colab_dashboard' element={<CollabDraw />} />
+        </Route>
+
         <Route path='/login' element={authUser ? <Navigate to='/' /> : <Login />} />
         <Route path='/signup' element={authUser ? <Navigate to='/' /> : <Signup />} />
-        <Route path='*' element={<Navigate to='/' /> } />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
       <Toaster />
     </>

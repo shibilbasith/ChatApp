@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import morgan from "morgan";
+import cors from "cors";
 
 import authRoutes from './routes/auth.routes.js'
 import messsageRoutes from './routes/message.routes.js'
@@ -12,7 +13,10 @@ dotenv.config();
 
 
 const PORT = process.env.PORT || 5002;
-app.use(express.json());
+
+app.use(cors());
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 

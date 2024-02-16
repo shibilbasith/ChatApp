@@ -26,7 +26,7 @@ io.on("connection", (socket)=>{
     //userId from frontend
     const userId = socket.handshake.query.userId;
     
-    if(userId != 'undefined') userSocketMap[userId] = socket.id; 
+    if(userId != 'undefined') userSocketMap[userId] = socket.id;  //setting user connection
 
     // io.emit() is used to send events to all the connected clients (to frontend)
 	io.emit("getOnlineUsers", Object.keys(userSocketMap)); 

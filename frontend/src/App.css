@@ -30,6 +30,12 @@ img {
     gap: 12px;
 }
 
+.center_Content_section {
+    margin-left: 110px;
+    padding: 20px;
+
+  }
+
 /* =============== S I D E M E N U ================ */
 
 
@@ -274,7 +280,7 @@ hr {
 
 .messageContainer_input_text>input {
     height: 50px;
-    width: 1200px;
+    /* width: 1200px; */
     border: none;
     background: transparent;
     font-size: 20px;
@@ -382,4 +388,32 @@ hr {
     position: absolute;
     bottom: -68px;
     left: 8px;
+}
+
+.ant-upload-list-item{
+    background-color: #fff;
+}
+
+
+:where(.css-dev-only-do-not-override-1xg9z9n).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture .ant-upload-list-item:hover, :where(.css-dev-only-do-not-override-1xg9z9n).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-card .ant-upload-list-item:hover, :where(.css-dev-only-do-not-override-1xg9z9n).ant-upload-wrapper .ant-upload-list.ant-upload-list-picture-circle .ant-upload-list-item:hover {
+    background: white;
+}
+
+
+
+/* msg input container */
+
+.attach_msg_container{
+    position: absolute;
+    bottom: 90px;
+}
+
+.attach_msg_cnt{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 0 2px;
 }
