@@ -9,11 +9,10 @@ import CollabDraw from './CollabDraw'
 const Home = () => {
     return <>
         <div class="main-body">
+
             <QuickSideMenu />
             {/* <ChatDashboard /> */}
-            {/* <div className="center_Content_section"> */}
                 <Outlet />
-              {/* </div> */}
             
        
         </div>

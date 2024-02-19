@@ -22,6 +22,26 @@ const userSocketMap = {};
 
 io.on("connection", (socket)=>{
     console.log('a user connected', socket.id);
+
+
+     // B R O A D C A S T C O N N E C T
+     socket.on('joinRoom', (roomId) => {
+        socket.join(roomId);
+        console.log(`User joined room: ${roomId}`);
+      });
+
+      socket.on('leaveRoom', (roomId) => {
+        socket.leave(roomId);
+        console.log(`User left room: ${roomId}`);
+      });
+
+      socket.on('codeChange', (roomId, message) => {
+        console.log(`Received message from client in room ${roomId}:`, message);
+        console.log('message:',message);
+        io.to(roomId).emit('codeChange', message); // Broadcast the message to all clients in the room
+      });
+
+
     
     //userId from frontend
     const userId = socket.handshake.query.userId;

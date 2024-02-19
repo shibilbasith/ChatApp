@@ -13,7 +13,7 @@ const Message = ({ message }) => {
   hours = hours % 12;
   hours = hours ? hours : 12;
   const timeString = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${ampm}`;
-  
+
 
 
   return (
@@ -23,12 +23,10 @@ const Message = ({ message }) => {
     </div> <br /> */}
 
       <div class="singleMsgContainer">
-
         <div class={fromMe ? "sendByMe" : "singleMessage_cnt"}>
-
           <div class="singleMessage">{message?.message}</div>
           <div class="singleMessageTime">{timeString}{fromMe &&
-              <img class="singleMessageTick" src="https://img.icons8.com/ios/50/4D4D4D/double-tick.png" alt="double-tick" />}
+            <img class="singleMessageTick" src="https://img.icons8.com/ios/50/4D4D4D/double-tick.png" alt="double-tick" />}
           </div>
         </div>
       </div><br /> <br />
