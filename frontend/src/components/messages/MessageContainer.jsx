@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Messages from './Messages'
 import MessageInput from './MessageInput'
 import useConversation from '../../store/useConversation';
 import MessageHeader from './MessageHeader';
-import addNotification from 'react-push-notification';
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
@@ -12,8 +11,43 @@ const MessageContainer = () => {
     // cleanup function (unmounts)
     return () => setSelectedConversation(null)
   }, [setSelectedConversation])
- 
+
+
+
+
+  //--------------------MULTER---------------------
+
+  const [file, setFile] = useState(null);
+
+  const onChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await response.json();
+      console.log('File uploaded successfully:', data.filePath);
+      // Send the file path to your database
+    } catch (error) {
+      console.error('Error uploading file:', error);
+    }
+  };
+
+
+
+
   return (<>
+
+
+
     {selectedConversation ?
 
       // <div class="messageContainer">
@@ -34,18 +68,25 @@ const MessageContainer = () => {
 
       <div class="parent">
         <div class="child2">
-          <div className="innerChild"><MessageHeader /></div>
-          <div class="innerChild1"><Messages /></div>
-          <div class="innerChild2">
-            {/* <MessageInput /> */}
-            <div className="input_child1"></div>
-            <div className="input_child2"></div>
+            <MessageHeader />
+          <div class="innerChild1">
+            <Messages />
             </div>
+          <div class="innerChild2">
+            <MessageInput />
+            {/* <div className="input_child1"></div>
+            <div className="input_child2"></div> */}
+          </div>
         </div>
       </div>
       :
       <div>
         No message
+
+        <form onSubmit={onSubmit}>
+          <input type="file" onChange={onChange} />
+          <button type="submit">Upload</button>
+        </form>
       </div>
     }
   </>)

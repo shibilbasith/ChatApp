@@ -8,14 +8,13 @@ import { Toaster } from 'react-hot-toast'
 import CollabDraw from './pages/home/CollabDraw'
 import ChatDashboard from './pages/home/ChatDashboard'
 import CodeShare from './pages/home/CodeShare'
+import addNotification from 'react-push-notification'
 
 function App() {
   const authUser = useAuthStore((state) => state.authUser);
-
   return (
     <>
       <Routes>
-        {/* <Route path='/' element={authUser ? <Home /> : <Navigate to={"/login"} />} /> */}
 
         <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />}>
           <Route path='/' element={<ChatDashboard />} />

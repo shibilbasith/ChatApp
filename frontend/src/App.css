@@ -276,8 +276,8 @@ hr {
 
 
 .messageContainer_input_img {
-    width: 30px;
-    height: 30px;
+    width: 30%;
+    height: 45%;
 }
 
 .messageContainer_input_text>input {
@@ -489,6 +489,9 @@ hr {
     height: 9%;
     width: 100%;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
 }
 
 .innerChild1 {
@@ -524,6 +527,9 @@ hr {
     width: 90%;
     background-color: #fff;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
 
 }
 
@@ -531,5 +537,8 @@ hr {
     width: 10%;
     background-color: #572ad7;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
