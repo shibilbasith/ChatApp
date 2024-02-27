@@ -7,7 +7,6 @@ import { Avatar, Space } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
 const Conversation = ({ conversation }) => {
-    console.log("🚀 ~ Conversation ~ conversation:", conversation)
     const { selectedConversation, setSelectedConversation } = useConversation();
     const { setSelectedUser } = useSelectedUser();
     const isSelected = selectedConversation?._id === conversation._id;

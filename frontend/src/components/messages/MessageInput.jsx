@@ -2,49 +2,60 @@ import React, { useState } from 'react'
 import useSendMessage from '../../hooks/useSendMessage';
 import { FolderAddOutlined } from '@ant-design/icons';
 import { Button, Upload } from 'antd';
+import useConversation from '../../store/useConversation';
 
 const MessageInput = () => {
+	const { selectedConversation } = useConversation();
+
   const [message, setMessage] = useState("");
   const { loading, sendMessage } = useSendMessage();
-  const [fileList, setFileList] = useState([]);
+  // const [fileList, setFileList] = useState([]);
 
-  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [file, setFile] = useState(null);
+
+
+  // const [selectedFiles, setSelectedFiles] = useState([]);
   const [previewUrls, setPreviewUrls] = useState([]);
   // const fileList = [];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!message && !fileList) return;
-    await sendMessage({ message, selectedFiles });
+
+
+    
+    if (file) {
+      const formData = new FormData();
+      formData.append('files', file);
+      try {
+        const response = await fetch(`/api/messages/upload/${selectedConversation._id}`, {
+          method: 'POST',
+          body: formData,
+        });
+        const data = await response.json();
+        console.log('File uploaded successfully:', data.filePath);
+        // Send the file path to your database
+      } catch (error) {
+        console.error('Error uploading file:', error);
+      }
+    }
+
+    if (!message) return;
+    await sendMessage({ message });
+
+    
+
     setMessage("");
-    setFileList([]);
+    // setFileList([]);
+
+    setFile(null)
   };
-
-
-
-
-  // // Function to handle file change event
-  // const handleChange = (info) => {
-  //   let fileList = [...info.fileList];
-
-  //   // Limiting the number of uploaded files
-  //   fileList = fileList.slice(-1);
-
-  //   // Update state with the new file list
-  //   setFileList(fileList);
-
-  // };
-
-  // const handleUpload = () => {
-  //   const formData = new FormData();
-  //   for (let i = 0; i < selectedFiles.length; i++) {
-  //     formData.append(`file${i}`, selectedFiles[i]);
-  //   }
-  // };
 
   const handleFileChange = (event) => {
     const files = event.target.files;
-    setSelectedFiles(files);
+    // setSelectedFiles(files);
+
+    setFile(event.target.files[0]);
+
 
     // Create preview URLs for selected files
     const urls = [];
@@ -60,14 +71,14 @@ const MessageInput = () => {
     const updatedUrls = previewUrls.filter(url => url !== urlToRemove);
     setPreviewUrls(updatedUrls);
   }
-  
+
 
   return (
 
     <>
 
       <div className="input_child1">
-        {/* <form onSubmit={handleSubmit} class="Msg_input_left">
+        <form onSubmit={handleSubmit} class="Msg_input_left">
 
           <div className='attach_msg_container'>
             {previewUrls.map((url, index) => (
@@ -93,13 +104,31 @@ const MessageInput = () => {
           />
           <div class="messageContainer_input_text"><input type="text" placeholder="Write messages..." value={message} onChange={(e) => setMessage(e.target.value)} />
           </div>
-        </form> */}
+        </form>
       </div>
+
+
       <div className="input_child2" onClick={handleSubmit}>
         <div class="messageContainer_input_img"><img
           src="https://img.icons8.com/material-rounded/24/FFFFFF/filled-sent.png"
           alt="filled-sent" /></div>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

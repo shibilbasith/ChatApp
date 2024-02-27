@@ -13,40 +13,7 @@ const MessageContainer = () => {
   }, [setSelectedConversation])
 
 
-
-
-  //--------------------MULTER---------------------
-
-  const [file, setFile] = useState(null);
-
-  const onChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await fetch('/api/upload', {
-        method: 'POST',
-        body: formData,
-      });
-      const data = await response.json();
-      console.log('File uploaded successfully:', data.filePath);
-      // Send the file path to your database
-    } catch (error) {
-      console.error('Error uploading file:', error);
-    }
-  };
-
-
-
-
   return (<>
-
-
 
     {selectedConversation ?
 
@@ -68,10 +35,10 @@ const MessageContainer = () => {
 
       <div class="parent">
         <div class="child2">
-            <MessageHeader />
+          <MessageHeader />
           <div class="innerChild1">
             <Messages />
-            </div>
+          </div>
           <div class="innerChild2">
             <MessageInput />
             {/* <div className="input_child1"></div>
@@ -82,11 +49,6 @@ const MessageContainer = () => {
       :
       <div>
         No message
-
-        <form onSubmit={onSubmit}>
-          <input type="file" onChange={onChange} />
-          <button type="submit">Upload</button>
-        </form>
       </div>
     }
   </>)

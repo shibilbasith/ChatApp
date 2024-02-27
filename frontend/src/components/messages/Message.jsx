@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuthStore } from '../../store/authStore';
+import axios from 'axios';
 
 const Message = ({ message }) => {
   const authUser = useAuthStore((state) => state.authUser);
@@ -13,7 +14,6 @@ const Message = ({ message }) => {
   hours = hours % 12;
   hours = hours ? hours : 12;
   const timeString = `${hours}:${minutes < 10 ? '0' : ''}${minutes} ${ampm}`;
-
 
 
   return (
@@ -30,6 +30,8 @@ const Message = ({ message }) => {
           </div>
         </div>
       </div><br /> <br />
+
+
     </>
   )
 }

@@ -14,7 +14,10 @@ const Message = mongoose.model("Message",
         },
         message: {
             type: String,
-            required: true
+            // required: true
+        },
+        fileLocation: {
+            type: String,
         }
     }, { timestamps: true }));
 
