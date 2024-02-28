@@ -74,6 +74,7 @@ img {
     color: #fff;
     width: 2.5rem;
     height: 2.5rem;
+    cursor: pointer;
 }
 
 
@@ -281,13 +282,20 @@ hr {
 }
 
 .messageContainer_input_text>input {
-    height: 50px;
+    /* height: 50px; */
+    height: 100%;
+    width: 100%;
     /* width: 1200px; */
     border: none;
     background: transparent;
     font-size: 20px;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     padding-top: 5px;
+}
+
+.messageContainer_input_text {
+    height: 100%;
+    width: 100%;
 }
 
 .messageContainer_input_text>input:focus {
@@ -295,8 +303,9 @@ hr {
 }
 
 .Msg_input_left {
-    background: #fff;
+    /* background: #fff; */
     width: 100%;
+    height: 100%;
     border-radius: 15px;
     display: flex;
     /* justify-content: space-between; */
@@ -319,51 +328,6 @@ hr {
 
 }
 
-
-.singleMsgContainer {
-    padding: 20px;
-    /* float: left; */
-
-
-}
-
-.singleMessage_cnt {
-    float: left;
-    /* margin-top: 45px; */
-}
-
-.sendByMe {
-    float: right;
-}
-
-.singleMessage {
-    background-color: #E6E6E6;
-    /* float: left; */
-    padding: 15px;
-    border-radius: 20px 20px 20px 0;
-}
-
-.sendByMe>.singleMessage {
-    border-radius: 20px 20px 0 20px;
-    background-color: #572ad7;
-    color: #fff;
-    min-width: 70px;
-    text-align: center;
-}
-
-.singleMessageTime {
-    font-size: 14px;
-    color: #727272;
-    margin-top: 2px;
-    display: flex;
-    align-items: center;
-
-}
-
-.sendByMe>.singleMessageTime {
-    float: right;
-}
-
 .online-status {
     width: 12px;
     height: 12px;
@@ -371,7 +335,8 @@ hr {
     border: 1px solid #fff;
     background-color: rgb(128, 207, 9);
     position: absolute;
-    margin-left: 40px;
+    margin-left: 28px;
+    z-index: 999;
     margin-top: 30px;
 }
 
@@ -409,8 +374,10 @@ hr {
 /* msg input container */
 
 .attach_msg_container {
-    position: absolute;
+    /* position: absolute; */
     bottom: 90px;
+    display: flex;
+    gap: 5px;
 }
 
 .attach_msg_cnt {
@@ -420,7 +387,31 @@ hr {
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-top: 5px;
-    padding: 0 2px;
+    padding: 2px;
+    position: relative;
+
+}
+
+.attach_msg_cnt:hover {
+    border: 1px solid #ff1212;
+    cursor: pointer;
+}
+
+.imgOverlay {
+    background-color: #c1b2b247;
+    position: absolute;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+
+}
+
+.imgOverlay:hover {
+    opacity: 1;
 }
 
 
@@ -433,14 +424,14 @@ hr {
 }
 
 .join_room_container {
-    background-color: #1a1a1a;
+    background-color: #292a35;
     /* width: 100%; */
     height: 60px;
     border-radius: 10px;
     padding: 0 10px;
     display: flex;
     align-items: center;
-    /* justify-content: end; */
+    justify-content: space-between;
 }
 
 .codeMirror_section {
@@ -500,6 +491,7 @@ hr {
     width: 100%;
     overflow-y: scroll;
     border-radius: 10px;
+    padding: 0 10px;
 }
 
 .innerChild1::-webkit-scrollbar {
@@ -529,7 +521,7 @@ hr {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    padding: 15px;
+    /* padding: 15px; */
 
 }
 
@@ -540,5 +532,74 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+
+}
+
+/* ============================================= */
+
+.sendByMe_og {
+    display: flex;
+    justify-content: end;
+    margin: 10px 0;
+
+}
+
+.singleMessage_cnt_og {
+    display: flex;
+    justify-content: start;
+    margin: 10px 0;
+
+}
+
+
+.singleMessage_og {
+    background-color: #E6E6E6;
+    /* float: left; */
+    padding: 15px;
+    border-radius: 20px 20px 20px 0;
+}
+
+.sendByMe_og .singleMessage_og {
+    border-radius: 20px 20px 0 20px;
+    background-color: #572ad7;
+    color: #fff;
+    min-width: 70px;
+    text-align: center;
+}
+
+
+.singleMessageTime_og {
+    font-size: 12px;
+    color: #727272;
+    margin-top: 2px;
+    display: flex;
+    justify-content: start;
+
+}
+
+.singleMessageTime_byme_og {
+    font-size: 12px;
+    color: #727272;
+    margin-top: 2px;
+    display: flex;
+    justify-content: end;
+
+}
+
+
+.getFilMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 50px;
+    width: 50px; */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.getFilMessage:hover{
+    border: 1px solid #949494;
 
 }

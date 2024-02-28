@@ -16,23 +16,6 @@ const MessageContainer = () => {
   return (<>
 
     {selectedConversation ?
-
-      // <div class="messageContainer">
-      //   <MessageHeader />
-      //   <div class="messageContainerBox">
-      //     {/* <div class="messageContainer_mainHeader">
-      //       <MessageHeader />
-      //     </div> */}
-      //     <div class="messageContainer_messages">
-      //       <Messages />
-      //     </div>
-      //     <div class="messageContainer_input">
-      //       <MessageInput />
-      //     </div>
-      //   </div>
-      // </div>
-
-
       <div class="parent">
         <div class="child2">
           <MessageHeader />
@@ -41,8 +24,6 @@ const MessageContainer = () => {
           </div>
           <div class="innerChild2">
             <MessageInput />
-            {/* <div className="input_child1"></div>
-            <div className="input_child2"></div> */}
           </div>
         </div>
       </div>

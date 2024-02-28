@@ -6,7 +6,7 @@ const useSendMessage = () => {
 	const [loading, setLoading] = useState(false);
 	const { messages, setMessages, selectedConversation } = useConversation();
 
-	const sendMessage = async ({ message }) => {
+	const sendMessage = async ({ message, file }) => {
 
 		setLoading(true);
 		try {
@@ -26,16 +26,22 @@ const useSendMessage = () => {
 			// 	}
 			// }
 
+			const formData = new FormData();
+			if (file) {
+				formData.append('files', file);
+			}
 
-			const res = await fetch(`/api/messages/send/${selectedConversation._id}`, { // send reciever id on params
+			const payloadImg = { // send reciever id on params
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-
 				body: JSON.stringify({ message }),
-				//sendinf message & file
-				// body: selectedFiles.length > 0 ? formData : JSON.stringify({ message })
-				// body: formData
-			});
+			}
+			const payloadFile = { // send reciever id on params
+				method: "POST",
+				body: formData 
+			}
+
+			const res = await fetch(`/api/messages/send/${selectedConversation._id}`, file ? payloadFile : payloadImg);
 			const data = await res.json();
 			if (data.error) throw new Error(data.error);
 

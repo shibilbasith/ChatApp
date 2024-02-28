@@ -1,9 +1,17 @@
+import path from "path";
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
 import { getReceiverSocketId, io } from "../socket/socket.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 
 export const sendMessage = asyncHandler(async (req, res) => {
+
+
+    let fileLocation = '';
+    if (req.file) {
+      fileLocation = `uploads/`+path.basename(req.file.path);
+    }
+
     const { message } = req.body;
     const { id: recieverId } = req.params;
     const senderId = req.user._id;
@@ -21,7 +29,9 @@ export const sendMessage = asyncHandler(async (req, res) => {
     const newMessage = new Message({
         senderId,
         recieverId,
-        message
+        message,
+        fileLocation
+
     });
 
     if (newMessage) {
@@ -53,53 +63,9 @@ export const getMessage = asyncHandler(async (req, res) => {
     if (!conversation) return res.status(200).json([])
 
     const messages = conversation.messages;
-
-    
-   if(messages.fileLocation){
-    const fileData = path.join(__dirname, upload.filePath);
-      res.sendFile(fileData);
-   }
-
    
 
     return res.status(200).json(messages)
     // return res.status(200).json(messages)
 })
 
-
-
-export const fileUpload = asyncHandler( async (req, res) => {
-    let fileLocation = '';
-    if (req.file) {
-      fileLocation = req.file.path;
-    }
-
-
-    const { id: recieverId } = req.params;
-    const senderId = req.user._id;
-
-    let conversation = await Conversation.findOne({
-        participents: { $all: [senderId, recieverId] } //all-> check senderId and recieverId include in the db
-    });
-
-    if (!conversation) {
-        conversation = await Conversation.create({
-            participents: [senderId, recieverId]
-        });
-    }
-
-    const newMessage = new Message({
-        senderId,
-        recieverId,
-        fileLocation
-    });
-
-    if (newMessage) {
-        conversation.messages.push(newMessage._id)
-    }
-
-    await Promise.all([conversation.save(), newMessage.save()]); //it will run at the same time
-
-    res.status(200).json({message: 'File uploaded successfully!'})
-
-  })
