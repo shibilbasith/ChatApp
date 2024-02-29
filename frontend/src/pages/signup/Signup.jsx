@@ -37,7 +37,7 @@ const Signup = () => {
             <section class="login_section">
                 <div class="login">
                     <div class="login_left_section" style={{height:'638px'}}>
-                        <div class="login_left_section_cnt">
+                        <div class="login_left_section_cnt-signup">
                             <div class="quote">A WISE QUOTE <span>-----------</span></div>
                             <div class="advice">
                                 <h2>Get <br /> Everything <br /> You Want</h2>

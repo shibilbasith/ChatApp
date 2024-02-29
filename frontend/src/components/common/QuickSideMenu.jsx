@@ -23,6 +23,7 @@ const content = (
                         src="https://img.icons8.com/ios/50/FFFFFF/chat.png" alt="chat" /></NavLink></li>
                     <li class="sideMenu_settings"><NavLink to={'/code_share'} data-title="Settings"><img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/code--v1.png" alt="code--v1" /></NavLink></li>
                     <li class="sideMenu_settings"><NavLink to={'/colab_dashboard'} data-title="Settings"><img width="50" height="50" src="https://img.icons8.com/ios/50/FFFFFF/design.png" alt="design" /></NavLink></li>
+                    <li class="sideMenu_settings"><NavLink to={'/todo_list'} data-title="Settings"><img width="48" height="48" src="https://img.icons8.com/parakeet-line/48/FFFFFF/overview-pages-3.png" alt="overview-pages-3"/></NavLink></li>
                     {/* <li class="sideMenu_saved"><a href="#" data-title="Saved"><img width="24" height="24"
                         src="https://img.icons8.com/external-anggara-basic-outline-anggara-putra/24/FFFFFF/external-bookmark-basic-user-interface-anggara-basic-outline-anggara-putra.png"
                         alt="external-bookmark-basic-user-interface-anggara-basic-outline-anggara-putra" /></a></li> */}

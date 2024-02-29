@@ -24,17 +24,17 @@ const SearchInput = () => {
 	};
 	return (
 
-		<div class="conversations_search_container">
+		<form onSubmit={handleSubmit} class="conversations_search_container">
 			{/* <form onSubmit={handleSubmit} > */}
 			{/* <input value={search} type="text" onChange={(e) => setSearch(e.target.value)} />
 				<button type='submit'>search</button> */}
 
 			<span>Chats</span>
 			<input class="conversations_search_input" value={search} type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Search" />
-			<div class="add_chat_btn">+</div>
+			<button type='submit' class="add_chat_btn"><img src="https://img.icons8.com/pastel-glyph/64/FFFFFF/search--v1.png" alt="search--v1"/></button>
 
 			{/* </form> */}
-		</div>
+		</form>
 	)
 }
 

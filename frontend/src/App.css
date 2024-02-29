@@ -152,6 +152,9 @@ img {
     padding: 0px 10px;
     margin-left: 5px;
     font-size: 30px;
+    width: 60px;
+    border: none;
+    cursor: pointer;
 }
 
 /* ----Conversation---- */
