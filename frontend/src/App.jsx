@@ -16,7 +16,6 @@ function App() {
   return (
     <>
       <Routes>
-
         <Route path="/" element={authUser ? <Home /> : <Navigate to={"/login"} />}>
           <Route path='/' element={<ChatDashboard />} />
           <Route path='/colab_dashboard' element={<CollabDraw />} />

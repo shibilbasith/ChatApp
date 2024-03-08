@@ -133,7 +133,7 @@ img {
 .conversations_search_input {
     background: #fff;
     border: 1px solid #ccc;
-    border-radius: 15px;
+    border-radius: 8px;
     margin-left: 10px;
     height: 35px;
     width: 100%;
@@ -148,7 +148,7 @@ img {
 .add_chat_btn {
     background: #572ad7;
     color: #fff;
-    border-radius: 50%;
+    border-radius: 8px;
     padding: 0px 10px;
     margin-left: 5px;
     font-size: 30px;

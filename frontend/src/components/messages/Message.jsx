@@ -27,9 +27,9 @@ const Message = ({ message }) => {
         <div>
           <div className={message?.fileLocation ? '' : 'singleMessage_og'}>
             {message?.fileLocation && <div style={{ width: isImageFile(message.fileLocation) ? '170px': '190px', height: isImageFile(message.fileLocation) ? '150px':'' }}>
-              <a href={`http://192.168.12.88:5002/${message?.fileLocation}`} target='_blank' download style={{textDecoration:'none', color:'#0d0d0d'}}>
+              <a href={`http://192.168.12.88:5009/${message?.fileLocation}`} target='_blank' download style={{textDecoration:'none', color:'#0d0d0d'}}>
 
-                {isImageFile(message.fileLocation) ? <img style={{ borderRadius: '10px' }} src={`http://192.168.12.88:5002/${message?.fileLocation}`} alt="" /> //For Image
+                {isImageFile(message.fileLocation) ? <img style={{ borderRadius: '10px' }} src={`http://192.168.12.88:5009/${message?.fileLocation}`} alt="" /> //For Image
                   :
                   <div className='getFilMessage'>
                     <div style={{width:'80px'}}><img src="https://img.icons8.com/external-vitaliy-gorbachev-blue-vitaly-gorbachev/60/external-file-home-office-vitaliy-gorbachev-blue-vitaly-gorbachev.png" alt="external-file-home-office-vitaliy-gorbachev-blue-vitaly-gorbachev" /></div>
